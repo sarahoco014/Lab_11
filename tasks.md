@@ -7,7 +7,9 @@ Each of the questions/tasks below can be answered using a `SELECT` query. When y
 ```sql
 <!-- Copy solution here -->
 
-SELECT * FROM matches WHERE season = 2017;
+SELECT * 
+FROM matches 
+WHERE season = 2017;
 
 ```
 
@@ -16,7 +18,10 @@ SELECT * FROM matches WHERE season = 2017;
 ```sql
 <!-- Copy solution here -->
 
-SELECT * FROM matches WHERE hometeam = 'Barcelona' OR awayteam = 'Barcelona';
+SELECT * 
+FROM matches 
+WHERE hometeam = 'Barcelona' 
+OR awayteam = 'Barcelona';
 
 ```
 
@@ -25,6 +30,11 @@ SELECT * FROM matches WHERE hometeam = 'Barcelona' OR awayteam = 'Barcelona';
 ```sql
 <!-- Copy solution here -->
 
+SELECT name 
+FROM divisions 
+WHERE name 
+LIKE 'Scottish%' 
+GROUP BY name;
 
 ```
 
