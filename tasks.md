@@ -145,7 +145,13 @@ OR (hometeam = 'Swansea' AND awayteam = 'Huddersfield');
 ```sql
 <!-- Copy solution here -->
 
+SELECT code 
+FROM divisions 
+WHERE name = 'Eredivisie';
 
+SELECT COUNT(id) 
+FROM matches 
+WHERE division_code = 'N1' AND fthg = ftag AND season >= 2010 AND season <= 2015;
 
 ```
 
