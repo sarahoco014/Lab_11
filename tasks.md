@@ -73,6 +73,48 @@ GROUP BY hometeam;
 ```sql
 <!-- Copy solution here -->
 
+-- Rough working here --
+
+SELECT code FROM divisions WHERE country = 'France' GROUP BY code;
+
+SELECT hometeam AS team_name
+FROM matches
+WHERE division_code IN (
+    SELECT code
+    FROM divisions
+    WHERE country = 'France'
+);
+
+SELECT awayteam AS team_name
+FROM matches
+WHERE division_code IN (
+    SELECT code
+    FROM divisions
+    WHERE country = 'France'
+);
+
+-- need to put this in one query and count DISTINCT team_name
+
+-- Final answer here --
+
+SELECT COUNT(DISTINCT team_name) AS total_teams
+FROM (
+    SELECT hometeam AS team_name
+    FROM Matches
+    WHERE division_code IN (
+        SELECT code
+        FROM Divisions
+        WHERE country = 'France'
+    )
+    UNION
+    SELECT awayteam AS team_name
+    FROM Matches
+    WHERE division_code IN (
+        SELECT code
+        FROM Divisions
+        WHERE country = 'France'
+    )
+) AS teams_in_french_div;
 
 ```
 
