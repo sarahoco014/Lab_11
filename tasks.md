@@ -162,23 +162,15 @@ WHERE division_code = 'N1' AND fthg = ftag AND season >= 2010 AND season <= 2015
 ```sql
 <!-- Copy solution here -->
 
-SELECT code 
+SELECT * 
 FROM divisions 
 WHERE name = 'Premier League';
 
-SELECT * 
-FROM matches 
-WHERE division_code = 'E0';
-
-ALTER TABLE matches
-ADD COLUMN total_goals INT;
-
-UPDATE matches
-SET total_goals = fthg + ftag;
-
-SELECT * 
-FROM matches 
-ORDER BY total_goals DESC, fthg DESC;
+SELECT id, SUM(ftag + fthg) AS total_goals
+FROM matches
+WHERE division_code = 'E0'
+GROUP BY id, fthg
+ORDER BY SUM(ftag + fthg) DESC, fthg DESC;
 
 ```
 
@@ -186,6 +178,12 @@ ORDER BY total_goals DESC, fthg DESC;
 
 ```sql
 <!-- Copy solution here -->
+
+SELECT division_code, season, SUM(fthg + ftag) AS total_goals
+FROM matches
+GROUP BY division_code, season
+ORDER BY total_goals DESC
+LIMIT 1;
 
 
 ```
