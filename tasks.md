@@ -36,6 +36,8 @@ WHERE name
 LIKE 'Scottish%' 
 GROUP BY name;
 
+-- Names: Scottish Championship, Scottish League One, Scottish Premiership 
+
 ```
 
 4) Find the value of the `code` for the `Bundesliga` division. Use that code to find out how many matches Freiburg have played in that division. HINT: You will need to query both tables
@@ -53,6 +55,8 @@ FROM matches
 WHERE (hometeam = 'Freiburg' AND division_code = 'D1') 
 OR (awayteam = 'Freiburg' AND division_code = 'D1');
 
+-- Number of matches = 374
+
 ```
 
 5) Find the teams which include the word "City" in their name. 
@@ -65,6 +69,8 @@ FROM matches
 WHERE hometeam 
 LIKE '%City' 
 GROUP BY hometeam;
+
+-- Teams: Bath City, Bristol City, Edinburgh City, Man City
 
 ```
 
@@ -116,6 +122,8 @@ FROM (
     )
 ) AS teams_in_french_div;
 
+-- teams_in_french_div: 61
+
 ```
 
 7) Have Huddersfield played Swansea in any of the recorded matches?
@@ -123,6 +131,12 @@ FROM (
 ```sql
 <!-- Copy solution here -->
 
+SELECT * 
+FROM matches 
+WHERE (hometeam = 'Huddersfield' AND awayteam = 'Swansea') 
+OR (hometeam = 'Swansea' AND awayteam = 'Huddersfield');
+
+-- Answer: True
 
 ```
 
@@ -130,6 +144,7 @@ FROM (
 
 ```sql
 <!-- Copy solution here -->
+
 
 
 ```
