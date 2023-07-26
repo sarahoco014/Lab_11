@@ -60,6 +60,11 @@ OR (awayteam = 'Freiburg' AND division_code = 'D1');
 ```sql
 <!-- Copy solution here -->
 
+SELECT hometeam 
+FROM matches 
+WHERE hometeam 
+LIKE '%City' 
+GROUP BY hometeam;
 
 ```
 
