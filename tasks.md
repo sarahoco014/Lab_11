@@ -91,6 +91,8 @@ WHERE division_code IN (
     WHERE country = 'France'
 );
 
+-- join to
+
 SELECT awayteam AS team_name
 FROM matches
 WHERE division_code IN (
@@ -120,7 +122,7 @@ FROM (
         FROM divisions
         WHERE country = 'France'
     )
-) AS teams_in_french_div;
+) AS french_div_teams;
 
 -- teams_in_french_div: 61
 
@@ -170,7 +172,7 @@ SELECT id, SUM(ftag + fthg) AS total_goals
 FROM matches
 WHERE division_code = 'E0'
 GROUP BY id, fthg
-ORDER BY SUM(ftag + fthg) DESC, fthg DESC;
+ORDER BY total_goals DESC, fthg DESC;
 
 ```
 
