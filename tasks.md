@@ -43,6 +43,15 @@ GROUP BY name;
 ```sql
 <!-- Copy solution here -->
 
+SELECT code 
+FROM divisions 
+WHERE name = 'Bundesliga' 
+GROUP BY code;
+
+SELECT COUNT(division_code) 
+FROM matches 
+WHERE (hometeam = 'Freiburg' AND division_code = 'D1') 
+OR (awayteam = 'Freiburg' AND division_code = 'D1');
 
 ```
 
