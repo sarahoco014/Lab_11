@@ -187,6 +187,8 @@ GROUP BY division_code, season
 ORDER BY total_goals DESC
 LIMIT 1;
 
+-- Answer: division_code = EC, season = 2013
+
 
 ```
 
