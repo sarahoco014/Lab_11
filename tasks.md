@@ -106,18 +106,18 @@ WHERE division_code IN (
 SELECT COUNT(DISTINCT team_name) AS total_teams
 FROM (
     SELECT hometeam AS team_name
-    FROM Matches
+    FROM matches
     WHERE division_code IN (
         SELECT code
-        FROM Divisions
+        FROM divisions
         WHERE country = 'France'
     )
     UNION
     SELECT awayteam AS team_name
-    FROM Matches
+    FROM matches
     WHERE division_code IN (
         SELECT code
-        FROM Divisions
+        FROM divisions
         WHERE country = 'France'
     )
 ) AS teams_in_french_div;
@@ -153,6 +153,8 @@ SELECT COUNT(id)
 FROM matches 
 WHERE division_code = 'N1' AND fthg = ftag AND season >= 2010 AND season <= 2015;
 
+-- Number of draws: 431
+
 ```
 
 9) Select the matches played in the Premier League in order of total goals scored from highest to lowest. When two matches have the same total the match with more home goals should come first.
@@ -160,6 +162,23 @@ WHERE division_code = 'N1' AND fthg = ftag AND season >= 2010 AND season <= 2015
 ```sql
 <!-- Copy solution here -->
 
+SELECT code 
+FROM divisions 
+WHERE name = 'Premier League';
+
+SELECT * 
+FROM matches 
+WHERE division_code = 'E0';
+
+ALTER TABLE matches
+ADD COLUMN total_goals INT;
+
+UPDATE matches
+SET total_goals = fthg + ftag;
+
+SELECT * 
+FROM matches 
+ORDER BY total_goals DESC, fthg DESC;
 
 ```
 
